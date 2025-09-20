@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TrickTrix - Login</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="login-container">
+    <h2>Select Role</h2>
+    <div class="tabs">
+      <button onclick="showForm('student')">Student</button>
+      <button onclick="showForm('teacher')">Teacher</button>
+      <button onclick="showForm('kids')">Kids</button>
+    </div>
+
+    <form id="student-form" class="hidden" onsubmit="return validateStudent()">
+      <h3>Student Login</h3>
+      <input type="text" id="sname" placeholder="Name" required>
+      <input type="text" id="sroll" placeholder="Roll No" required>
+      <input type="email" id="semail" placeholder="Email" required>
+      <input type="tel" id="sphone" placeholder="Phone" required>
+      <button type="submit">Start Quiz</button>
+    </form>
+
+    <form id="teacher-form" class="hidden" onsubmit="return saveQuestion()">
+      <h3>Teacher Panel</h3>
+      <input type="text" id="tquestion" placeholder="Enter Question" required>
+      <input type="text" id="toption1" placeholder="Option 1" required>
+      <input type="text" id="toption2" placeholder="Option 2" required>
+      <input type="text" id="toption3" placeholder="Option 3" required>
+      <input type="text" id="toption4" placeholder="Option 4" required>
+      <input type="text" id="tanswer" placeholder="Correct Answer" required>
+      <button type="submit">Add Question</button>
+    </form>
+
+    <form id="kids-form" class="hidden" onsubmit="return startKidsQuiz()">
+      <h3>Kids Login</h3>
+      <input type="text" id="kname" placeholder="Name" required>
+      <input type="text" id="kclass" placeholder="Class" required>
+      <input type="text" id="kroll" placeholder="Roll No" required>
+      <button type="submit">Start Kids Quiz</button>
+    </form>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+                            </html>
