@@ -1,0 +1,51 @@
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background: linear-gradient(to right, #6a11cb, #2575fc);
+  color: white;
+  text-align: center;
+}
+
+.hidden { display: none; }
+
+.welcome-body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.welcome-container {
+  background: rgba(0,0,0,0.6);
+  padding: 30px;
+  border-radius: 12px;
+}
+
+button {
+  margin-top: 10px;
+  padding: 10px 20px;
+  background: gold;
+  color: black;
+  font-weight: bold;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.login-container, .quiz-container, .result-container, .certificate {
+  margin: 50px auto;
+  padding: 20px;
+  background: rgba(0,0,0,0.6);
+  width: 60%;
+  border-radius: 12px;
+}
+
+.popup {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  padding: 15px;
+  background: white;
+  color: black;
+  border-radius: 8px;
+}
