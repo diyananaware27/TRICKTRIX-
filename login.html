@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Login • TrickTrix</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body class="page-body">
+  <main class="center-card form-card">
+    <h2>Login / Enter Details</h2>
+
+    <form id="loginForm" onsubmit="return handleLogin(event)">
+      <label>Name</label>
+      <input id="name" placeholder="Full name" required/>
+
+      <label>Roll No / Class</label>
+      <input id="roll" placeholder="Roll No (students) / Class (kids)" />
+
+      <label>Email (students)</label>
+      <input id="email" placeholder="example@mail.com" type="email" />
+
+      <label>Phone (10 digits)</label>
+      <input id="phone" placeholder="9876543210" />
+
+      <label>Role</label>
+      <select id="roleSelect">
+        <option value="student">Student</option>
+        <option value="kids">Kids</option>
+        <option value="teacher">Teacher</option>
+      </select>
+
+      <div class="row">
+        <button class="btn primary" type="submit">Continue</button>
+        <a href="index.html" class="btn link">Back</a>
+      </div>
+      <p id="loginError" class="error small" style="display:none"></p>
+    </form>
+  </main>
+
+<script src="script.js"></script>
+<script>
+  // set role if provided in query
+  (function(){
+    const params = new URLSearchParams(location.search);
+    const r = params.get('role');
+    if(r) document.getElementById('roleSelect').value = r;
+  })();
+</script>
+</body>
+</html>
