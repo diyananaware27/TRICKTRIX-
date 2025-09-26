@@ -1,0 +1,69 @@
+:root{
+  --p1:#8e2de2; --p2:#ff5ac6; --accent:#ffb347; --muted:#6b6b6b; --glass: rgba(255,255,255,0.06);
+}
+*{box-sizing:border-box;font-family:Inter, system-ui, Arial, sans-serif}
+html,body{height:100%;margin:0;background:linear-gradient(135deg,var(--p1),var(--p2));color:#fff}
+
+/* common centered card */
+.center-card{max-width:920px;margin:6vh auto;padding:28px;border-radius:18px;background:var(--glass);backdrop-filter: blur(6px);box-shadow:0 10px 40px rgba(0,0,0,0.25)}
+.logo{font-size:44px}
+.subtitle{opacity:0.95;margin:8px 0 18px}
+
+/* buttons */
+.btn{padding:10px 18px;border-radius:999px;border:none;cursor:pointer;font-weight:700;margin:6px}
+.btn.primary{background:var(--accent);color:#111}
+.btn.outline{background:transparent;border:2px solid rgba(255,255,255,0.14);color:#fff}
+.btn.link{background:transparent;color:rgba(255,255,255,0.95)}
+.btn.small{padding:6px 10px;font-size:13px}
+
+/* welcome */
+.welcome-card{text-align:center;padding:44px}
+.cta-row{display:flex;gap:12px;justify-content:center}
+
+/* form */
+.form-card input, .form-card textarea, .form-card select{width:100%;padding:12px;margin:8px 0;border-radius:10px;border:1px solid rgba(255,255,255,0.08);background:rgba(255,255,255,0.02);color:#fff}
+.form-card label{display:block;margin-top:8px;color:rgba(255,255,255,0.9)}
+
+/* rows & columns */
+.row{display:flex;gap:12px}
+.cols{display:flex;flex-direction:row;gap:12px}
+@media(max-width:700px){ .row,.cols{flex-direction:column} }
+
+/* quiz */
+.quiz-card{text-align:left;padding:20px}
+.qbox{background:#fff;border-radius:12px;padding:16px;color:#111}
+.qtext{font-size:20px;font-weight:700}
+.q-image{max-width:100%;border-radius:10px;margin:12px 0}
+.options{margin-top:10px;display:flex;flex-direction:column;gap:10px}
+.options button{background:linear-gradient(90deg,#fff,#f0f0f0);border-radius:10px;padding:12px;border:none;cursor:pointer;font-weight:700}
+.options button.correct{background:linear-gradient(90deg,#baf7c2,#64d56f)}
+.options button.wrong{background:linear-gradient(90deg,#ffd6d6,#ff7b7b)}
+
+/* footer area */
+.quiz-footer{display:flex;justify-content:space-between;align-items:center;margin-top:12px}
+.timer{font-weight:700;color:var(--muted)}
+.progress{color:var(--muted)}
+
+/* small / muted */
+.small{font-size:13px}
+.muted{color:rgba(255,255,255,0.8)}
+.user-info{opacity:0.95}
+
+/* popup */
+.popup{position:fixed;top:22px;right:22px;padding:14px 18px;border-radius:10px;color:#111;font-weight:800;z-index:999;box-shadow:0 8px 30px rgba(0,0,0,0.3)}
+.hidden{display:none}
+
+/* result */
+.result-card{text-align:center;color:#111}
+
+/* teacher list */
+#qList .qcard{background:#fff;padding:10px;border-radius:8px;margin:8px 0;color:#111;display:flex;justify-content:space-between;align-items:center}
+
+/* certificate */
+.certificate-card{max-width:720px;margin:4vh auto}
+
+/* responsive tweaks */
+@media (max-width:720px){
+  .center-card{margin:4vh 12px;padding:18px}
+  .logo{font-size:34px}
+}
