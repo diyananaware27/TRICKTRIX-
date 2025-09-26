@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Kids Quiz • TrickTrix</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body class="page-body">
+  <header class="topbar">
+    <div class="brand">✨ TrickTrix (Kids)</div>
+    <div id="userInfoKids" class="user-info"></div>
+  </header>
+
+  <main class="center-card quiz-card">
+    <h2 id="kidsTitle">Kids Quiz</h2>
+
+    <div id="kidsBox" class="qbox">
+      <p id="kidsNumber" class="muted small"></p>
+      <img id="kidsImg" class="q-image" alt="" />
+      <div id="kidsQText" class="qtext"></div>
+      <div id="kidsOptions" class="options"></div>
+    </div>
+
+    <div class="quiz-footer">
+      <div class="left">
+        <div class="timer small">Time Left: <span id="timerKids">30</span>s</div>
+      </div>
+      <div class="controls">
+        <button class="btn outline" id="kidsPrev">Prev</button>
+        <button class="btn outline" id="kidsNext">Next</button>
+        <button class="btn primary" id="kidsSubmit">Submit</button>
+      </div>
+    </div>
+  </main>
+
+  <div id="popupKids" class="popup hidden"></div>
+
+<script src="script.js"></script>
+<script>
+  document.getElementById('kidsPrev').addEventListener('click', kidsPrev);
+  document.getElementById('kidsNext').addEventListener('click', kidsNext);
+  document.getElementById('kidsSubmit').addEventListener('click', kidsSubmit);
+  loadQuizPage('kids');
+</script>
+</body>
+</html>
