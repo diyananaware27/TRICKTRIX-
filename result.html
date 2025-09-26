@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Result • TrickTrix</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body class="page-body">
+  <main class="center-card result-card">
+    <h2>Quiz Result</h2>
+    <div id="resultArea" class="card" style="text-align:center;padding:18px"></div>
+
+    <div class="row" style="justify-content:center;margin-top:12px">
+      <a id="homeBtn" class="btn link" href="index.html">Home</a>
+      <button id="printCert" class="btn primary">Print Certificate</button>
+    </div>
+  </main>
+
+<script src="script.js"></script>
+<script>
+  renderResultPage();
+  document.getElementById('printCert').addEventListener('click', ()=>{
+    // prepare certificate values and open certificate page
+    const r = JSON.parse(sessionStorage.getItem('tr_result')||'{}');
+    if(r){
+      localStorage.setItem('tr_cert', JSON.stringify(r));
+      window.open('certificate.html','_blank');
+    } else alert('No result to print.');
+  });
+</script>
+</body>
+</html>
