@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Teacher • TrickTrix</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body class="page-body">
+  <main class="center-card form-card">
+    <h2>Teacher Panel — Add Questions</h2>
+
+    <label>For</label>
+    <select id="qType">
+      <option value="student">Student</option>
+      <option value="kids">Kids</option>
+    </select>
+
+    <label>Question text</label>
+    <textarea id="qText" placeholder="Write the question..."></textarea>
+
+    <div class="row cols">
+      <input id="o1" placeholder="Option A" />
+      <input id="o2" placeholder="Option B" />
+    </div>
+    <div class="row cols">
+      <input id="o3" placeholder="Option C" />
+      <input id="o4" placeholder="Option D" />
+    </div>
+
+    <label>Correct option (A / B / C / D)</label>
+    <input id="correct" placeholder="A" maxlength="1" />
+
+    <label>Image URL (optional for kids)</label>
+    <input id="imageUrl" placeholder="https://..." />
+
+    <div class="row" style="justify-content:flex-end">
+      <button class="btn primary" id="saveQ">Save Question</button>
+      <a class="btn link" href="index.html">Home</a>
+    </div>
+
+    <h3 style="margin-top:18px">Saved Questions (local)</h3>
+    <div id="qList" style="max-height:240px;overflow:auto"></div>
+    <div style="margin-top:10px; text-align:right">
+      <button class="btn small" id="clearAll">Delete All</button>
+    </div>
+  </main>
+
+<script src="script.js"></script>
+<script>
+  // teacher page hooks
+  document.getElementById('saveQ').addEventListener('click', ()=>{
+    const type = document.getElementById('qType').value;
+    const q = document.getElementById('qText').value.trim();
+    const opts = [document.getElementById('o1').value.trim(), document.getElementById('o2').value.trim(), document.getElementById('o3').value.trim(), document.getElementById('o4').value.trim()];
+    const c = (document.getElementById('correct').value || '').toUpperCase().trim();
+    const img = document.getElementById('imageUrl').value.trim();
+    if(!q || opts.some(o=>!o) || !'ABCD'.includes(c)){ alert('Fill all fields and correct option as A/B/C/D'); return; }
+    addTeacherQuestion({ type, q, options: opts, answer: c, img });
+    document.getElementById('qText').value=''; ['o1','o2','o3','o4','correct','imageUrl'].forEach(id=>document.getElementById(id).value='');
+    renderTeacherList();
+  });
+
+  document.getElementById('clearAll').addEventListener('click', ()=>{ if(confirm('Delete all teacher questions?')){ clearTeacherQuestions(); renderTeacherList(); }});
+  renderTeacherList();
+</script>
+</body>
+</html>
