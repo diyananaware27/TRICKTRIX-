@@ -1,0 +1,34 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Certificate • TrickTrix</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body class="page-body">
+  <main class="center-card certificate-card">
+    <div class="card certificate" style="text-align:center;padding:30px">
+      <h1>Certificate of Participation</h1>
+      <p>This certifies that</p>
+      <h2 id="certName">Name</h2>
+      <p>has completed the TrickTrix quiz</p>
+      <p id="certScore">Score: 0 / 0</p>
+      <div style="margin-top:14px">
+        <button class="btn primary" onclick="window.print()">Print / Save as PDF</button>
+        <a class="btn link" href="index.html">Home</a>
+      </div>
+    </div>
+  </main>
+
+<script>
+  (function(){
+    const r = JSON.parse(localStorage.getItem('tr_cert')||'null');
+    if(r){
+      document.getElementById('certName').innerText = r.name || 'Participant';
+      document.getElementById('certScore').innerText = `Score: ${r.correct} / ${r.total} (${Math.round((r.correct/r.total)*100)}%)`;
+    }
+  })();
+</script>
+</body>
+</html>
