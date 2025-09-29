@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>TrickTrix Online Quiz</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div id="welcomePage" class="page active">
+  <h1>TrickTrix Online Quiz</h1>
+  <button onclick="goToRole()">GO</button>
+</div>
+
+<div id="rolePage" class="page">
+  <h2>Select Your Role</h2>
+  <button onclick="location.href='student.html'">Student</button>
+  <button onclick="location.href='teacher.html'">Teacher</button>
+</div>
+
+<script>
+function goToRole(){
+  document.getElementById('welcomePage').style.display = 'none';
+  document.getElementById('rolePage').style.display = 'block';
+}
+</script>
+</body>
+</html>
