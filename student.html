@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Student Dashboard</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<h2>Welcome, <span id="studentName"></span></h2>
+
+<div id="registrationCard" class="card">
+<h3>Student Registration</h3>
+<form id="studentForm">
+<input type="text" id="sname" placeholder="Name" required><br>
+<input type="tel" id="sphone" placeholder="Phone Number" required><br>
+<input type="email" id="semail" placeholder="Email" required><br>
+<input type="text" id="sclass" placeholder="Class" required><br>
+<input type="text" id="sroll" placeholder="Roll Number" required><br>
+<button type="submit">Start Learning</button>
+</form>
+<p id="studentError" class="error"></p>
+</div>
+
+<div id="subjectCards" style="display:none;">
+<h3>Select Subject</h3>
+<div class="card" onclick="openQuiz('Math')">Math</div>
+<div class="card" onclick="openQuiz('Science')">Science</div>
+<div class="card" onclick="openQuiz('English')">English</div>
+<div class="card" onclick="openQuiz('History')">History</div>
+</div>
+
+<script>
+let student = JSON.parse(localStorage.getItem('student'));
+if(student){
+  document.getElementById('studentName').innerText = student.name;
+  document.getElementById('registrationCard').style.display='none';
+  document.getElementById('subjectCards').style.display='block';
+}
+document.getElementById('studentForm').addEventListener('submit',function(e){
+  e.preventDefault();
+  let name=document.getElementById('sname').value;
+  let phone=document.getElementById('sphone').value;
+  let email=document.getElementById('semail').value;
+  let sclass=document.getElementById('sclass').value;
+  let roll=document.getElementById('sroll').value;
+  if(!name||!phone||!email||!sclass||!roll){
+    document.getElementById('studentError').innerText="All fields required!"; return;
+  }
+  localStorage.setItem('student',JSON.stringify({name,phone,email,sclass,roll}));
+  alert("Registration Successful!");
+  location.reload();
+});
+function openQuiz(subject){
+  localStorage.setItem('selectedSubject',subject);
+  location.href='student_quiz.html';
+}
+</script>
+</body>
+</html>
