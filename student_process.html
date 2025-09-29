@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Progress - TrickTrix</title>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<h2>Progress Report</h2>
+<canvas id="progressChart" width="400" height="200"></canvas>
+<button onclick="location.href='student_game.html'">Play Learning Game</button>
+<button onclick="location.href='student.html'">Back to Subjects</button>
+
+<script>
+let studentProgress=JSON.parse(localStorage.getItem('progress'))||{};
+let subjects=Object.keys(studentProgress);
+let scores=Object.values(studentProgress);
+
+const ctx=document.getElementById('progressChart').getContext('2d');
+const chart=new Chart(ctx,{
+type:'bar',
+data:{
+labels:subjects.length?subjects:["No Data"],
+datasets:[{label:'Score',data:scores.length?scores:[0],backgroundColor:'rgba(37,117,252,0.7)',borderColor:'rgba(37,117,252,1)',borderWidth:1}]
+},
+options:{scales:{y:{beginAtZero:true,max:10}}}
+});
+</script>
+</body>
+</html>
