@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Quiz - TrickTrix</title>
+<link rel="stylesheet" href="style.css">
+<script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.5.1/dist/confetti.browser.min.js"></script>
+</head>
+<body>
+<h2>Subject: <span id="subjectName"></span></h2>
+<div id="quizContainer" class="card">
+<p id="question"></p>
+<div id="options"></div>
+<button id="nextBtn" onclick="nextQuestion()">Next</button>
+</div>
+
+<script>
+let subject=localStorage.getItem('selectedSubject');
+document.getElementById('subjectName').innerText=subject;
+let quizzes={
+  "Math":[{q:"5+7=?",options:["10","11","12","13"],ans:"12"},{q:"10-3=?",options:["6","7","8","9"],ans:"7"}],
+  "Science":[{q:"Water formula?",options:["H2O","CO2","O2","NaCl"],ans:"H2O"}],
+  "English":[{q:"Synonym of Happy?",options:["Sad","Joyful","Angry","Tired"],ans:"Joyful"}],
+  "History":[{q:"Who discovered America?",options:["Columbus","Einstein","Newton","Galileo"],ans:"Columbus"}]
+};
+let current=0,score=0;
+
+function loadQuestion(){
+  let q=quizzes[subject][current];
+  document.getElementById('question').innerText=q.q;
+  let optionsHtml='';
+  q.options.forEach(opt=>{optionsHtml+=`<button onclick="checkAnswer('${opt}')">${opt}</button><br>`;});
+  document.getElementById('options').innerHTML=optionsHtml;
+}
+function checkAnswer(selected){
+  if(selected===quizzes[subject][current].ans) score++;
+  current++;
+  if(current>=quizzes[subject].length){
+    alert("Quiz Finished! Score: "+score+"/"+quizzes[subject].length);
+    saveProgress();
+    if(score>=quizzes[subject].length) confetti();
+    location.href='student_progress.html';
+  }else loadQuestion();
+}
+function nextQuestion(){ loadQuestion(); }
+function saveProgress(){
+  let studentProgress=JSON.parse(localStorage.getItem('progress'))||{};
+  studentProgress[subject]=score;
+  localStorage.setItem('progress',JSON.stringify(studentProgress));
+}
+loadQuestion();
+</script>
+</body>
+</html>
